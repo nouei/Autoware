@@ -1,7 +1,14 @@
 #include "draw_rects.h"
 #include <string>
 #include <vector>
+#include <opencv/cv.hpp>
+
+#if (CV_MAJOR_VERSION >= 3)
+#include <opencv2/imgproc.hpp>
+#include <opencv2/imgcodecs.hpp>
+#else
 #include <opencv2/contrib/contrib.hpp>
+#endif
 
 namespace integrated_viewer
 {
@@ -10,8 +17,8 @@ namespace integrated_viewer
   const cv::Scalar DrawRects::kGreen              = CV_RGB(0, 255, 0);
   
   DrawRects::DrawRects(void) {
-    // Generate color map to represent tracked object
-    cv::generateColors(color_map_, 25);
+	// Generate color map to represent tracked object
+	//cv::generateColors(color_map_, 25); /* FIX THIS!!! generateColors method was excluded in OpenCV 3.0  */
 
   } // DrawRects::DrawRects()
 
